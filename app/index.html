@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>FluidDB People</title>
+	<style type="text/css" media="screen">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;outline:0;font-size:100%;/*vertical-align:baseline;*/background:transparent;margin:0;padding:0;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:none;}:focus{outline:0;}ins{text-decoration:none;}del{text-decoration:line-through;}table{border-collapse:collapse;border-spacing:0;}
+body{background:#fff;font-family:arial,sans;color:#222;font-size:0.8em;}
+a{color:#69b;text-decoration:none;}a:hover{text-decoration:underline;}a img{border:0;}
+em,strong{color:#000}
+h1{font-size:2em;margin-bottom:1em;}
+
+#container{width:90%;min-width:700px;max-width:800px;margin:0 auto;}
+#header{color:#000;border-bottom:1px dotted #ccc;padding:8px 8px 20px 0;margin-bottom:1em;}
+#header .guide{font-size:1.4em;}
+#guide{padding:10px;margin-bottom:1em;border:1px dotted #ccc;display:none;}
+#footer{clear:both;text-align:center;font-size:0.8em;color:#666;height:2em;margin-top:1em;padding-top:1em;border-top:1px dotted #ccc;}
+
+#map_canvas{width:100%;height:300px;border:1px solid #ccc;}
+.iwwrapper{width:200px;height:50px;}
+
+.typo h2, .typo h3, .typo p{margin-bottom:1em;}
+.typo p{line-height:1.4em;}
+.typo h2{font-size:1.6em;}
+.type h3{font-size:1.4em;}
+.typo ol{padding:0 0 1em 2em;}
+.typo li{list-style:decimal;}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+		<h1>People around the world using FluidDB</h1>
+		<div class="guide">Learn to add yourself by following the <a href="#/guide">guide</a>.</div>
+	</div>
+	<div id="guide" class="typo">
+		<h2>Guide</h2>
+		<p>Here is a guide how to add yourself on the map. All you need is a FluidDB account and some way to set some tag values; the <a href="http://explorer.fluidinfo.com/fluiddb/" target="_blank">FluidDB Explorer</a> offers one way to do that.</p>
+
+		<h3>Conventions</h3>
+		<p>To get yourself on the map, you have to do two things, both of which are achieved by tagging object in FluidDB.</p>
+		<ol>
+			<li>Give values for your latitude and longitude</li>
+			<li>Tell the people application that you exist</li>
+		</ol>
+		<p>Let's assume that your FluidDB username is <code>foobar</code>. First you need to set your latitude and longitude by attaching tags <code>foobar/people/latitude</code> and <code>foobar/people/longitude</code> to the appropriate numeric values. You attach these tags to the FluidDB object that corresponds to you, which if your username is foobar is the object with the about tag <code>Object for the user named foobar</code>. An example of a user who has done this is paparent; you can see his tagged object <a href="http://www.abouttag.com/butterfly/about/Object%20for%20the%20user%20named%20paparent">here</a> in a modern browser.</p>
+		<p>To let the people application know that you exist, you need to tag the object with about tag <code>collection:peopleapp</code> (62397fb0-6f96-404a-a8fa-ee3758cfa7f2) with the tag <code>foobar/peopleapp</code>. You can see this object in most modern web broswers by clicking <a href="http://www.abouttag.com/butterfly/about/collection:peopleapp">here</a>.
+		<p>Once you've done these two things, you should be live in the people application.</p>
+
+		<h3>Methods</h3>
+		<h4>FluidDB Explorer</h4>
+		<p>Please follow these quick steps:</p>
+		<ol>
+			<li>Browse to the explorer with your username at the end of the URL, e.g. <a href="http://explorer.fluidinfo.com/fluiddb/paparent" target="_blank">http://explorer.fluidinfo.com/fluiddb/paparent</a> for username <code>paparent</code></li>
+			<li>Click on the <code>Log in with your FluidDB ID</code> and fill-in the form to log in the Explorer.</li>
+			<li>On the left-hand of the application, there's the namespace tree. Right click on your username, create a tag named <code>peopleapp</code>.</li>
+			<li>Create a namespace named <code>people</code> with two tags in it: <code>latitude</code> and <code>longitude</code>.</li>
+			<li>Find your user object via the Query field on top right; enter the query <code>fluiddb/about="Object for the user named foobar"</code> (replace foobar with your username).</li>
+			<li>You should find the object so double click it to open the object window.</li>
+			<li>Add your <code>latitude</code> and <code>longitude</code> tags on your user object.</li>
+			<li>Find the collection object with the query field again; enter the query <code>fluiddb/about="collection:peopleapp"</code>.</li>
+			<li>Add your <code>peopleapp</code> tag to that collection</li>
+			<li>Refresh this page and enjoy!</li>
+		</ol>
+		<h4>fbd.py</h4>
+		<p>You can <a href="http://blog.abouttag.com/2010/12/fluiddb-people-app-from-paparent.html" target="_blank">read the blog post</a> from Nicholas J. Radcliffe to know how to add yourself with his <code>fbd.py</code> library.</p>
+        <h4>Emacs using fluiddb.el</h4>
+        <p>Here is <a href="http://posterous.betareduction.info/a-little-exercise-for-fluiddbel" target="_blank">A little exercise for fluiddb.el</a>, written by Holger Durer.</p>
+	</div>
+	<div id="main"></div>
+	<div id="map_canvas"></div>
+	<div id="footer">
+		Copyright &copy; 2010 PA Parent
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" charset="utf-8"></script>
+<script src="sammy-0.6.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="fluiddb.js" type="text/javascript" charset="utf-8"></script>
+<script src="app.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
